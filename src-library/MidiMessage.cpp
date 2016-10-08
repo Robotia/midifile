@@ -1266,7 +1266,7 @@ void MidiMessage::makeNoteOff(int channel, int key, int velocity) {
 
 void MidiMessage::makeNoteOff(int channel, int key) {
    resize(3);
-   (*this)[0] = 0x90 | (0x0f & channel);
+   (*this)[0] = 0x80 | (0x0f & channel);
    (*this)[1] = key & 0x7f;
    (*this)[2] = 0x00;
 }
@@ -1275,7 +1275,7 @@ void MidiMessage::makeNoteOff(int channel, int key) {
 void MidiMessage::makeNoteOff(void) {
    if (!isNoteOn()) {
       resize(3);
-      (*this)[0] = 0x90;
+      (*this)[0] = 0x80;
       (*this)[1] = 0;
       (*this)[2] = 0;
    } else {
